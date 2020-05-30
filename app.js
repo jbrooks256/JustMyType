@@ -15,8 +15,24 @@ $(document).ready(function () {
     }
   });
 
+  let letterIndex = 0;
   $(document).keypress(function (e) {
+    e.preventDefault();
+    console.log(letterIndex);
+    console.log(currentSentence.charCodeAt(letterIndex));
+    console.log(e.keyCode);
     $(`#${e.keyCode}`).addClass("highlight");
+    if (currentSentence.charCodeAt(letterIndex) == e.keyCode) {
+      $("#yellow-block").css("left", "+=17.5");
+      letterIndex++;
+    }
+    if (letterIndex == currentSentence.length) {
+      letterIndex = 0;
+      sentenceIndex++;
+      $("#sentence").text(sentences[sentenceIndex]);
+      currentSentence = senteces[sentenceIndex];
+      $("#yellow-block").css("left", "17.5");
+    }
   });
 
   let sentences = [
@@ -27,7 +43,7 @@ $(document).ready(function () {
     "nee ene ate ite tent tiet ent ine ene ete ene ate",
   ];
   let sentenceIndex = 0;
+  let currentSentence = sentences[sentenceIndex];
 
-  $("#sentence").append(sentences[sentenceIndex]);
-  sentenceIndex++;
+  $("#sentence").text(currentSentence);
 });
