@@ -16,6 +16,16 @@ $(document).ready(function () {
   });
 
   let letterIndex = 0;
+  let sentences = [
+    "ten ate neite ate nee enet ite ate inet ent eate",
+    "Too ato too nOt enot one totA not anot tOO aNot",
+    "oat itain oat tain nate eate tea anne inant nean",
+    "itant eate anot eat nato inate eat anot tain eat",
+    "nee ene ate ite tent tiet ent ine ene ete ene ate",
+  ];
+  let sentenceIndex = 0;
+  let currentSentence = sentences[sentenceIndex];
+
   $(document).keypress(function (e) {
     e.preventDefault();
     console.log(letterIndex);
@@ -30,20 +40,10 @@ $(document).ready(function () {
       letterIndex = 0;
       sentenceIndex++;
       $("#sentence").text(sentences[sentenceIndex]);
-      currentSentence = senteces[sentenceIndex];
+      currentSentence = sentences[sentenceIndex];
       $("#yellow-block").css("left", "17.5");
     }
   });
-
-  let sentences = [
-    "ten ate neite ate nee enet ite ate inet ent eate",
-    "Too ato too nOt enot one totA not anot tOO aNot",
-    "oat itain oat tain nate eate tea anne inant nean",
-    "itant eate anot eat nato inate eat anot tain eat",
-    "nee ene ate ite tent tiet ent ine ene ete ene ate",
-  ];
-  let sentenceIndex = 0;
-  let currentSentence = sentences[sentenceIndex];
 
   $("#sentence").text(currentSentence);
 });
