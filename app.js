@@ -28,21 +28,21 @@ $(document).ready(function () {
 
   $(document).keypress(function (e) {
     e.preventDefault();
-    console.log(letterIndex);
-    console.log(currentSentence.charCodeAt(letterIndex));
-    console.log(e.keyCode);
     $(`#${e.keyCode}`).addClass("highlight");
     if (currentSentence.charCodeAt(letterIndex) == e.keyCode) {
+  $("#feedback").append("<span class = 'glyphicon glyphicon-ok'></span>")
       $("#yellow-block").css("left", "+=17.5");
       letterIndex++;
-    }
+    } else {
+      $("#feedback").append("<span class = 'glyphicon glyphicon-remove'></span>")
+    } 
     if (letterIndex == currentSentence.length) {
       letterIndex = 0;
       sentenceIndex++;
+      $("#yellow-block").css("left", "initial");
       $("#sentence").text(sentences[sentenceIndex]);
       currentSentence = sentences[sentenceIndex];
-      $("#yellow-block").css("left", "17.5");
-    }
+    } 
   });
 
   $("#sentence").text(currentSentence);
